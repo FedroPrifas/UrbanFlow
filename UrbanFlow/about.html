@@ -4,25 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UrbanFlow - Quem Somos</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
-    <header class="navbar">
+    <!-- Fundo Esfumaçado Atmosférico -->
+    <div class="smoky-bg" aria-hidden="true">
+        <div class="smoke-circle smoke-1"></div>
+        <div class="smoke-circle smoke-2"></div>
+        <div class="smoke-circle smoke-3"></div>
+    </div>
+
+    <!-- Barra de Navegação -->
+    <header class="navbar" role="banner">
         <div class="nav-container">
             <div class="brand">
-        
+                <i data-lucide="compass" aria-hidden="true"></i>
                 <span><span>Urban</span><span class="yellow">Flow</span></span>
             </div>
-            <nav>
-                <a href="./index.html" class="btn">← VOLTAR AO INÍCIO</a>
+            <nav role="navigation" aria-label="Menu Secundário">
+                <a href="./index.html" class="btn"><i data-lucide="arrow-left" size="16"></i> Voltar ao Início</a>
             </nav>
         </div>
     </header>
 
-    <main class="content">
-        <article class="card">
-            <h1>QUEM SOMOS</h1>
+    <!-- Conteúdo "Quem Somos" -->
+    <main class="content" role="main">
+        <article class="card" aria-labelledby="titulo-quemsomos">
+            <div class="card-header-flex">
+                <i data-lucide="users" aria-hidden="true"></i>
+                <h1 id="titulo-quemsomos">QUEM SOMOS</h1>
+            </div>
             <p>O UrbanFlow nasceu para transformar a maneira como as pessoas enxergam seus deslocamentos pela cidade.</p>
             <p>Mais do que encontrar um caminho, nossa proposta é ajudar o usuário a entender suas opções. O sistema analisa diferentes rotas considerando informações de trânsito e condições climáticas, reunindo esses dados em um <strong>Índice de Mobilidade do Trajeto</strong>.</p>
             <p>Com uma interface simples e intuitiva, o UrbanFlow permite visualizar, comparar e classificar diferentes alternativas de percurso, tornando informações que normalmente ficam espalhadas em diferentes serviços mais fáceis de compreender.</p>
@@ -30,5 +44,10 @@
         </article>
     </main>
 
+    <footer class="footer-info" role="contentinfo">
+        <p>&copy; 2026 UrbanFlow. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="./script.js"></script>
 </body>
 </html>
