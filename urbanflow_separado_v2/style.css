@@ -1,0 +1,302 @@
+/* ==========================================================
+   1. VARIÁVEIS GLOBAIS DE CORES E CONFIGURAÇÕES
+   ========================================================== */
+:root{
+  --verde: #14B866;
+  --verde-escuro: #0E8F4F;
+  --laranja: #EDA83C;
+  --laranja-escuro: #D6902A;
+  --preto: #1B1B1B;
+  --cinza-900: #232323;
+  --cinza-100: #EDEDED;
+  --cinza-200: #E2E2E2;
+  --cinza-400: #B8B8B8;
+  --branco: #FFFFFF;
+  --texto: #1B1B1B;
+  --risco-alto: #E0663E;
+  --risco-medio: #EDA83C;
+  --risco-baixo: #14B866;
+  --radius-lg: 28px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+}
+
+/* Reseta margens e espaçamento padrão de todos os elementos */
+*{box-sizing:border-box; margin:0; padding:0;}
+
+body{
+  background: #EAEAE7;
+  font-family:'Inter',sans-serif;
+  color:var(--texto);
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  justify-content:center;
+  padding:40px 20px;
+}
+
+h1,h2,h3,.display{font-family:'Sora',sans-serif;}
+
+/* ==========================================================
+   2. ESTRUTURA DA MOLDURA DO CELULAR (FRAME)
+   ========================================================== */
+.phone{
+  width:390px;
+  height:820px;
+  background:var(--branco);
+  border-radius:44px; /* Bordas arredondadas imitando smartphone */
+  overflow:hidden;
+  position:relative;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25); /* Sombra elegante */
+  border: 8px solid var(--preto); /* Moldura preta lateral */
+  display:flex;
+  flex-direction:column;
+}
+
+.statusbar{
+  height:38px;
+  background:var(--preto);
+  color:var(--branco);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  font-size:13px;
+  font-weight:600;
+  flex-shrink:0;
+  z-index:5;
+}
+
+.statusbar .icons{display:flex; gap:6px; align-items:center;}
+
+/* ==========================================================
+   3. GERENCIAMENTO DE TELAS (EXIBIÇÃO / OCULTAÇÃO)
+   ========================================================== */
+.screens{
+  position:relative;
+  flex:1;
+  overflow:hidden;
+}
+
+.screen{
+  position:absolute;
+  inset:0;
+  display:none; /* Por padrão, todas as telas começam ocultas */
+  flex-direction:column;
+  overflow-y:auto;
+  background:var(--branco);
+}
+
+.screen.active{display:flex;} /* Apenas a tela ativa é exibida */
+.screen::-webkit-scrollbar{display:none;}
+
+/* ==========================================================
+   4. COMPONENTES VISUAIS E COMPARTILHADOS
+   ========================================================== */
+.brand-header{
+  background:var(--verde);
+  padding:28px 24px 34px;
+  position:relative;
+}
+.brand-header h1{color:var(--laranja); font-size:34px; letter-spacing:-0.5px;}
+.brand-header p{color:rgba(255,255,255,0.85); font-size:14px; margin-top:4px;}
+
+.sheet{
+  background:var(--branco);
+  border-radius:26px 26px 0 0;
+  margin-top:-20px;
+  padding:28px 24px 100px;
+  flex:1;
+}
+
+label.field-label{
+  display:block;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:#8B8B8B;
+  margin-bottom:6px;
+  margin-top:18px;
+}
+label.field-label:first-child{margin-top:0;}
+
+input, select{
+  width:100%;
+  background:var(--cinza-100);
+  border:none;
+  border-radius:var(--radius-sm);
+  padding:14px 16px;
+  font-size:15px;
+  font-family:'Inter',sans-serif;
+  color:var(--texto);
+}
+input:focus, select:focus{outline:2px solid var(--verde);}
+input::placeholder{color:#A6A6A6;}
+
+.btn{
+  display:block;
+  width:100%;
+  text-align:center;
+  padding:15px;
+  border-radius:var(--radius-sm);
+  border:none;
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:15px;
+  cursor:pointer;
+  margin-top:24px;
+}
+.btn-primary{background:var(--preto); color:var(--branco);}
+.btn-primary:active{background:var(--cinza-900);}
+.btn-outline{background:transparent; color:var(--preto); border:1.5px solid var(--preto);}
+
+.link-row{text-align:center; margin-top:16px; font-size:13px; color:#6B6B6B;}
+.link-row a{color:var(--verde-escuro); font-weight:600; text-decoration:none;}
+
+/* Estilos específicos da Tela Splash */
+#splash{background:var(--verde); align-items:center; justify-content:center; text-align:center; padding:40px;}
+#splash .avatar{
+  width:190px; height:190px; border-radius:50%;
+  background:var(--laranja);
+  margin:0 auto 28px;
+  display:flex; align-items:center; justify-content:center;
+}
+#splash .avatar svg{width:88px; height:88px;}
+#splash h1{color:var(--laranja); font-size:44px; margin-bottom:8px;}
+#splash .tagline{color:rgba(255,255,255,0.9); font-size:14px; line-height:1.5; max-width:270px; margin:0 auto 36px;}
+
+/* Inputs de Código 2FA */
+.code-row{display:flex; gap:10px; margin-top:10px;}
+.code-row input{text-align:center; font-size:22px; font-weight:700; padding:14px 0;}
+
+/* Home / Busca */
+.home-header{background:var(--verde); padding:20px 20px 28px; position:relative;}
+.home-topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;}
+.home-topbar .greet{color:var(--branco);}
+.home-topbar .greet .hi{font-size:12px; opacity:0.85;}
+.home-topbar .greet .name{font-size:18px; font-weight:700; font-family:'Sora',sans-serif;}
+.avatar-sm{
+  width:44px; height:44px; border-radius:50%;
+  background:var(--laranja);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Sora',sans-serif; font-weight:700; color:var(--preto);
+  cursor:pointer;
+}
+.search-card{
+  background:var(--branco);
+  border-radius:var(--radius-md);
+  padding:16px;
+  box-shadow:0 14px 30px rgba(0,0,0,0.12);
+}
+.search-field{display:flex; align-items:center; gap:10px; padding:10px 4px; border-bottom:1px solid var(--cinza-200);}
+.search-field:last-of-type{border-bottom:none;}
+.search-field .dot{width:9px; height:9px; border-radius:50%; flex-shrink:0;}
+.dot-origem{background:var(--verde);}
+.dot-destino{background:var(--laranja-escuro);}
+.search-field input{background:transparent; padding:6px 0;}
+.home-body{padding:20px 20px 100px; margin-top:0;}
+.section-title{font-family:'Sora',sans-serif; font-weight:700; font-size:15px; margin:22px 0 12px;}
+.fav-card{
+  display:flex; align-items:center; gap:12px;
+  background:var(--cinza-100);
+  border-radius:var(--radius-sm);
+  padding:14px;
+  margin-bottom:10px;
+  cursor:pointer;
+}
+.fav-card .pin{
+  width:38px; height:38px; border-radius:10px; background:var(--verde);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.fav-card .pin svg{width:18px; height:18px;}
+.fav-card .t1{font-weight:600; font-size:14px;}
+.fav-card .t2{font-size:12px; color:#8B8B8B; margin-top:2px;}
+.alert-banner{
+  background:#FDF1E4; border-left:4px solid var(--laranja);
+  border-radius:10px; padding:12px 14px; font-size:12.5px; color:#7A5A22;
+  margin-top:16px; margin-bottom:14px; line-height:1.5;
+}
+
+/* Cards de Rotas */
+.route-card{
+  border:1.5px solid var(--cinza-200);
+  border-radius:var(--radius-md);
+  padding:16px;
+  margin-bottom:14px;
+  cursor:pointer;
+}
+.route-top{display:flex; justify-content:space-between; align-items:flex-start;}
+.route-tag{
+  display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.4px;
+  padding:4px 10px; border-radius:20px; color:var(--branco); margin-bottom:8px;
+}
+.tag-rapida{background:var(--risco-alto);}
+.tag-equilibrada{background:var(--risco-medio);}
+.tag-tranquila{background:var(--risco-baixo);}
+.route-time{font-family:'Sora',sans-serif; font-size:22px; font-weight:700;}
+.route-sub{font-size:12.5px; color:#8B8B8B; margin-top:2px;}
+.gauge-wrap{text-align:right;}
+.gauge-label{font-size:10.5px; color:#8B8B8B; margin-bottom:4px;}
+.gauge{width:64px; height:6px; background:var(--cinza-200); border-radius:6px; overflow:hidden;}
+.gauge > div{height:100%; border-radius:6px;}
+.gauge-val{font-size:11px; font-weight:700; margin-top:4px;}
+
+/* Mapa Placeholder e Sugestão */
+.map-placeholder{
+  height:220px; background:
+    repeating-linear-gradient(0deg, #E4E4E4 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, #E4E4E4 0 1px, transparent 1px 34px),
+    #F2F2F0;
+  position:relative;
+}
+.map-placeholder .pinmark{
+  position:absolute; width:30px; height:30px; background:var(--preto);
+  border-radius:50% 50% 50% 0; transform:rotate(-45deg);
+}
+.suggestion-box{
+  background:var(--preto); color:var(--branco); border-radius:var(--radius-md);
+  padding:16px; margin-top:18px;
+}
+.suggestion-box .st{font-size:11px; color:var(--cinza-400); font-weight:700; letter-spacing:0.5px; margin-bottom:6px;}
+.suggestion-box .sv{font-family:'Sora',sans-serif; font-size:18px; font-weight:700; color:var(--laranja);}
+.suggestion-box .sd{font-size:12.5px; color:var(--cinza-400); margin-top:4px; line-height:1.5;}
+
+/* Perfil */
+.profile-head{background:var(--verde); padding:36px 24px 30px; text-align:center;}
+.profile-avatar{
+  width:88px; height:88px; border-radius:50%; background:var(--laranja);
+  margin:0 auto 12px; display:flex; align-items:center; justify-content:center;
+  font-family:'Sora',sans-serif; font-weight:800; font-size:30px; color:var(--preto);
+}
+.profile-head h3{color:var(--branco); font-size:18px;}
+.profile-head p{color:rgba(255,255,255,0.85); font-size:12.5px; margin-top:2px;}
+.pref-row{display:flex; align-items:center; justify-content:space-between; padding:15px 0; border-bottom:1px solid var(--cinza-200);}
+.pref-row .pl{font-size:14.5px; font-weight:600;}
+.pref-row .ps{font-size:12px; color:#8B8B8B; margin-top:2px;}
+.switch{width:42px; height:24px; background:var(--cinza-200); border-radius:20px; position:relative; cursor:pointer; flex-shrink:0;}
+.switch.on{background:var(--verde);}
+.switch::after{content:''; position:absolute; width:18px; height:18px; background:var(--branco); border-radius:50%; top:3px; left:3px; transition:.15s;}
+.switch.on::after{left:21px;}
+.danger-btn{color:var(--risco-alto); font-weight:700; font-size:13.5px; text-align:center; margin-top:28px; cursor:pointer;}
+
+/* ==========================================================
+   5. BARRA DE NAVEGAÇÃO INFERIOR E BOTÕES
+   ========================================================== */
+.bottomnav{
+  position:absolute; bottom:0; left:0; right:0;
+  height:68px; background:var(--preto);
+  display:flex; align-items:center; justify-content:space-around;
+  z-index:10;
+}
+.navitem{display:flex; flex-direction:column; align-items:center; gap:4px; color:#8A8A8A; cursor:pointer; font-size:10px;}
+.navitem.active{color:var(--laranja);}
+.navitem svg{width:22px; height:22px;}
+
+.icon-btn{width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; cursor:pointer;}
+.backbar{display:flex; align-items:center; gap:14px; padding:20px 20px 0;}
+.backbar .icon-btn{background:var(--cinza-100);}
+.backbar .icon-btn svg{stroke:var(--preto);}
+.backbar h2{font-size:17px;}
+
+.phone-block{display:flex; flex-direction:column; align-items:center; gap:14px;}
+.status-icon{width:16px;height:16px;vertical-align:middle;display:inline-block;}

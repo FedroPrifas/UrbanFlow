@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanFlow — Protótipo</title>
+  
+  <!-- Importação das fontes Google Fonts (Sora e Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Conexão com o arquivo CSS separado -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Bloco centralizado que simula a moldura de um smartphone -->
+<div class="phone-block">
+  <div class="phone" id="phone">
+    
+    <!-- Barra de status superior do celular (Horário e ícones de sinal/bateria) -->
+    <div class="statusbar">
+      <span>9:41</span>
+      <span class="icons">
+        <img class="status-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcz0iYmkgYmktcmVjZXB0aW9uLTQiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZD0iTTAgMTEuNWEuNS41IDAgMCAxIC41LS41aDJhLjUuNSAwIDAgMSAuNS41djJhLjUuNSAwIDAgMS0uNS41aC0yYS41LjUgMCAwIDEtLjUtLjV6bTQtM2EuNS41IDAgMCAxIC41LS41aDJhLjUuNSAwIDAgMSAuNS41djVhLjUuNSAwIDAgMS0uNS41aC0yYS41LjUgMCAwIDEtLjUtLjV6bTQtM2EuNS41IDAgMCAxIC41LS41aDJhLjUuNSAwIDAgMSAuNS41djhhLjUuNSAwIDAgMS0uNS41aC0yYS41LjUgMCAwIDEtLjUtLjV6bTQtM2EuNS41IDAgMCAxIC41LS41aDJhLjUuNSAwIDAgMSAuNS41djExYS41LjUgMCAwIDEtLjUuNWgtMmEuNS41IDAgMCAxLS41LS41eiIvPgo8L3N2Zz4=" alt="Sinal">
+        <img class="status-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcz0iYmkgYmktYmF0dGVyeS1mdWxsIiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik0yIDZoMTB2NEgyeiIvPgogIDxwYXRoIGQ9Ik0yIDRhMiAyIDAgMCAwLTIgMnY0YTIgMiAwIDAgMCAyIDJoMTBhMiAyIDAgMCAwIDItMlY2YTIgMiAwIDAgMC0yLTJ6bTEwIDFhMSAxIDAgMCAxIDEgMXYxTEExIDEgMCAwIDEtMSAxTEgyYTEgMSAwIDAgMS0xLTF2LTZhMSAxIDAgMCAxIDEtMXptNCAzYTEuNSAxLjUgMCAwIDEtMS41IDEuNswtM0ExLjUgMS41IDAgMCAxIDE2IDgiLz4KPC9zdmc+" alt="Bateria">
+      </span>
+    </div>
+
+    <!-- Área principal onde ficam todas as telas do aplicativo -->
+    <div class="screens">
+
+      <!-- 1. TELA DE SPLASH (Boas-vindas inicial) -->
+      <section class="screen active" id="splash">
+        <div class="avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1B1B1B" stroke-width="2"><path d="M3 17l4-8 4 5 3-4 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h1>Urban Flow</h1>
+        <p class="tagline">Rotas urbanas pensadas para o seu bem-estar, não só para o menor tempo no trânsito.</p>
+        <button class="btn btn-primary" style="max-width:260px" onclick="go('cadastro')">Criar conta</button>
+        <button class="btn btn-outline" style="max-width:260px" onclick="go('login')">Entrar</button>
+      </section>
+
+      <!-- 2. TELA DE LOGIN -->
+      <section class="screen" id="login">
+        <div class="brand-header" style="padding-bottom:70px;">
+          <div class="icon-btn" style="position:absolute; top:24px; left:20px;" onclick="go('splash')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="sheet">
+          <h2>Bem-vindo de volta</h2>
+          <p style="color:#8B8B8B; font-size:13.5px; margin-top:4px;">Entre para ver suas rotas e preferências.</p>
+
+          <label class="field-label">E-MAIL OU TELEFONE</label>
+          <input type="text" placeholder="jiara.martins@email.com">
+
+          <label class="field-label">SENHA</label>
+          <input type="password" placeholder="••••••••">
+          <div style="text-align:right; margin-top:8px;">
+            <a href="#" style="font-size:12px; color:#8B8B8B;">Esqueci minha senha</a>
+          </div>
+
+          <button class="btn btn-primary" onclick="go('verificacao')">Entrar</button>
+          <div class="link-row">Ainda não tem conta? <a href="#" onclick="go('cadastro')">Criar conta</a></div>
+        </div>
+      </section>
+
+      <!-- 3. TELA DE CADASTRO -->
+      <section class="screen" id="cadastro">
+        <div class="brand-header" style="padding-bottom:70px;">
+          <div class="icon-btn" style="position:absolute; top:24px; left:20px;" onclick="go('splash')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="sheet">
+          <h2>Criar conta</h2>
+          <p style="color:#8B8B8B; font-size:13.5px; margin-top:4px;">Leva menos de um minuto.</p>
+
+          <label class="field-label">NOME COMPLETO</label>
+          <input type="text" placeholder="Jiara Martins">
+
+          <label class="field-label">TELEFONE</label>
+          <input type="text" placeholder="(11) 91234-5678">
+
+          <label class="field-label">E-MAIL</label>
+          <input type="email" placeholder="jiara.martins@email.com">
+
+          <label class="field-label">SENHA</label>
+          <input type="password" placeholder="Mínimo de 8 caracteres">
+
+          <button class="btn btn-primary" onclick="go('verificacao')">Criar conta</button>
+          <div class="link-row">Já tem conta? <a href="#" onclick="go('login')">Entrar</a></div>
+        </div>
+      </section>
+
+      <!-- 4. TELA DE VERIFICAÇÃO 2 ETAPAS (2FA) -->
+      <section class="screen" id="verificacao">
+        <div class="brand-header" style="padding-bottom:70px;">
+          <div class="icon-btn" style="position:absolute; top:24px; left:20px;" onclick="go('login')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="sheet">
+          <h2>Verificação em 2 etapas</h2>
+          <p style="color:#8B8B8B; font-size:13.5px; margin-top:4px; line-height:1.5;">Enviamos um código de 4 dígitos para (11) 91234-5678.</p>
+
+          <label class="field-label">CÓDIGO</label>
+          <div class="code-row">
+            <input type="text" maxlength="1" value="4">
+            <input type="text" maxlength="1" value="8">
+            <input type="text" maxlength="1" value="1">
+            <input type="text" maxlength="1" value="9">
+          </div>
+          <div style="text-align:center; margin-top:14px;">
+            <a href="#" style="font-size:12.5px; color:#8B8B8B;">Reenviar código</a>
+          </div>
+
+          <button class="btn btn-primary" onclick="go('home')">Confirmar</button>
+        </div>
+      </section>
+
+      <!-- 5. TELA HOME / BUSCA DE ROTAS -->
+      <section class="screen" id="home">
+        <div class="home-header">
+          <div class="home-topbar">
+            <div class="greet">
+              <div class="hi">Boa tarde,</div>
+              <div class="name">Jiara Martins</div>
+            </div>
+            <div class="avatar-sm" onclick="go('perfil')">J</div>
+          </div>
+          <div class="search-card">
+            <div class="search-field">
+              <span class="dot dot-origem"></span>
+              <input type="text" placeholder="Local de origem" value="Rua Augusta, 1200">
+            </div>
+            <div class="search-field">
+              <span class="dot dot-destino"></span>
+              <input type="text" placeholder="Para onde vamos?" value="Av. Paulista, 900">
+            </div>
+          </div>
+        </div>
+        <div class="home-body">
+          <button class="btn btn-primary" style="margin-top:0;" onclick="go('rotas')">Buscar rotas</button>
+
+          <div class="alert-banner">⚠️ Chuva moderada prevista entre 18h e 19h na sua região — pode aumentar o desgaste das rotas nesse período.</div>
+
+          <div class="section-title">Rotas favoritas</div>
+          <div class="fav-card" onclick="go('rota-detalhe')">
+            <div class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 21s7-7.5 7-12a7 7 0 10-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+            <div>
+              <div class="t1">Casa → Trabalho</div>
+              <div class="t2">Equilibrada · usada 5x na semana</div>
+            </div>
+          </div>
+          <div class="fav-card" onclick="go('rota-detalhe')">
+            <div class="pin" style="background:var(--laranja-escuro);"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 21s7-7.5 7-12a7 7 0 10-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+            <div>
+              <div class="t1">Trabalho → Faculdade</div>
+              <div class="t2">Tranquila · usada 3x na semana</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. TELA DE COMPARAÇÃO DE ROTAS -->
+      <section class="screen" id="rotas">
+        <div class="backbar">
+          <div class="icon-btn" onclick="go('home')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke-width="2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h2>Rua Augusta → Av. Paulista</h2>
+        </div>
+        <div style="padding:18px 20px 100px;">
+          <p style="font-size:12.5px; color:#8B8B8B; margin-bottom:16px;">3 rotas encontradas · comparadas pelo Índice de Desgaste</p>
+
+          <div class="route-card" onclick="go('rota-detalhe')">
+            <div class="route-top">
+              <div>
+                <span class="route-tag tag-rapida">RUIM</span>
+                <div class="route-time">24 min</div>
+                <div class="route-sub">6,1 km · via Av. Consolação</div>
+              </div>
+              <div class="gauge-wrap">
+                <div class="gauge-label">Desgaste</div>
+                <div class="gauge"><div style="width:78%; background:var(--risco-alto);"></div></div>
+                <div class="gauge-val" style="color:var(--risco-alto);">Alto · 78</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="route-card" onclick="go('rota-detalhe')">
+            <div class="route-top">
+              <div>
+                <span class="route-tag tag-equilibrada">EQUILIBRADA</span>
+                <div class="route-time">31 min</div>
+                <div class="route-sub">7,4 km · via Rua Haddock Lobo</div>
+              </div>
+              <div class="gauge-wrap">
+                <div class="gauge-label">Desgaste</div>
+                <div class="gauge"><div style="width:52%; background:var(--risco-medio);"></div></div>
+                <div class="gauge-val" style="color:var(--risco-medio);">Médio · 52</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="route-card" onclick="go('rota-detalhe')">
+            <div class="route-top">
+              <div>
+                <span class="route-tag tag-tranquila">TRANQUILA</span>
+                <div class="route-time">39 min</div>
+                <div class="route-sub">8,0 km · via Alameda Santos</div>
+              </div>
+              <div class="gauge-wrap">
+                <div class="gauge-label">Desgaste</div>
+                <div class="gauge"><div style="width:24%; background:var(--risco-baixo);"></div></div>
+                <div class="gauge-val" style="color:var(--risco-baixo);">Baixo · 24</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. TELA DE DETALHE DA ROTA -->
+      <section class="screen" id="rota-detalhe">
+        <div class="map-placeholder">
+          <div class="icon-btn" style="position:absolute; top:16px; left:16px; background:#fff;" onclick="go('rotas')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1B1B1B" stroke-width="2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="pinmark" style="top:40px; left:60px; background:var(--verde);"></div>
+          <div class="pinmark" style="top:100px; left:250px; background:var(--laranja-escuro);"></div>
+        </div>
+        <div style="padding:20px 22px 100px;">
+          <span class="route-tag tag-equilibrada">EQUILIBRADA</span>
+          <h2 style="margin-top:6px;">31 min · 7,4 km</h2>
+          <p style="font-size:12.5px; color:#8B8B8B; margin-top:2px;">Rua Augusta, 1200 → Av. Paulista, 900</p>
+
+          <div class="suggestion-box">
+            <div class="st">HORÁRIO SUGERIDO</div>
+            <div class="sv">Saia às 17:10</div>
+            <div class="sd">Saindo 20 min mais cedo, você evita o pico de trânsito e reduz o Índice de Desgaste de 52 para 34.</div>
+          </div>
+
+          <button class="btn btn-primary" onclick="go('home')">Iniciar rota</button>
+          <button class="btn btn-outline" onclick="go('home')">Salvar como favorita</button>
+        </div>
+      </section>
+
+      <!-- 8. TELA DE PERFIL -->
+      <section class="screen" id="perfil">
+        <div class="profile-head">
+          <div class="profile-avatar">J</div>
+          <h3>Jiara Martins</h3>
+          <p>jiara.martins@email.com</p>
+        </div>
+        <div style="padding:20px 22px 100px;">
+          <div class="section-title" style="margin-top:0;">Preferências de rota</div>
+          <div class="pref-row">
+            <div><div class="pl">Evitar vias com histórico de acidentes</div></div>
+            <div class="switch on" onclick="this.classList.toggle('on')"></div>
+          </div>
+          <div class="pref-row">
+            <div><div class="pl">Priorizar rotas tranquilas</div><div class="ps">Mesmo que o trajeto seja mais longo</div></div>
+            <div class="switch on" onclick="this.classList.toggle('on')"></div>
+          </div>
+          <div class="danger-btn" onclick="go('splash')">Excluir minha conta</div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- BARRA DE NAVEGAÇÃO INFERIOR (Menu fixo do app) -->
+    <div class="bottomnav" id="bottomnav">
+      <div class="navitem" data-target="home" onclick="go('home')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+        Início
+      </div>
+      <div class="navitem" data-target="rotas" onclick="go('rotas')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        Rotas
+      </div>
+      <div class="navitem" data-target="home-fav" onclick="go('home')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-7.5 7-12a7 7 0 10-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Favoritos
+      </div>
+      <div class="navitem" data-target="perfil" onclick="go('perfil')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+        Perfil
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Conexão com o arquivo JavaScript separado -->
+<script src="script.js"></script>
+</body>
+</html>
